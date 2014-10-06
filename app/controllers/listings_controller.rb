@@ -3,7 +3,7 @@ class ListingsController < ApplicationController
   
   def index
     session[:fav] ||= []
-    @pros = Listing.includes(:user).where('users.pro = true').reverse
+    @pros = Listing.includes(:user).where('users.pro = true')
     @listings = Listing.includes(:user).where('users.pro = false')
   end
   

@@ -37,6 +37,13 @@ GEM
       json (>= 1.7)
       mime-types (>= 1.16)
     coderay (1.1.0)
+    coffee-rails (3.2.2)
+      coffee-script (>= 2.2.0)
+      railties (~> 3.2.0)
+    coffee-script (2.3.0)
+      coffee-script-source
+      execjs
+    coffee-script-source (1.8.0)
     delayed_job (4.0.4)
       activesupport (>= 3.0, < 4.2)
     delayed_job_active_record (4.0.2)
@@ -146,6 +153,7 @@ PLATFORMS
 DEPENDENCIES
   bcrypt-ruby (~> 3.0.0)
   carrierwave
+  coffee-rails (~> 3.2.1)
   delayed_job_active_record
   dotenv-rails
   jquery-rails

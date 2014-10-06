@@ -2,12 +2,13 @@
   <div id="searchbar-label">I'm looking for</div>
 
   <div class="searchbar-section">
-    <select>
+    <!-- <select class="sb-select">
       <option>All</option>
       <option>Senior Portrait</option>
       <option>Wedding</option>
       <option>Real Estate</option>
-    </select>
+    </select> -->
+    <%= collection_select(:listing, :category_id, Category.all, :id, :name) %>
 
     <div class="searchbar-section-label">Photographers</div>
   </div>
@@ -15,7 +16,7 @@
   <div class="searchbar-label_section">in</div>
 
   <div class="searchbar-section">
-    <select>
+    <select class="sb-select">
       <option>All Locations</option>
       <option>Washington, D.C.</option>
       <option>Omaha, NE</option>
@@ -26,7 +27,7 @@
   <div class="searchbar-label_section">for</div>
 
   <div class="searchbar-section">
-    <select>
+    <select class="sb-select">
       <option>Any Budget</option>
       <option>Low Budget</option>
       <option>High Budget</option>
@@ -36,7 +37,7 @@
 
 <div id="cards">
   
-<% if @pros.length > 1 %>
+<% if @pros.length > 0 %>
   <% @pros.each do |pro| %>
   <div class="card card-pro">
     <div class="card-fav-d">

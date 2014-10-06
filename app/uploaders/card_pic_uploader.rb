@@ -32,13 +32,13 @@ class CardPicUploader < CarrierWave::Uploader::Base
   # end
 
   # Create different versions of your uploaded files:
-  version :card_pro do
-    process :resize_to_limit => [450, 400]
-  end
-
-  version :card do
-    process :resize_to_limit => [200, 200]
-  end
+  # version :card_pro do
+  #   process :resize_to_limit => [450, 400]
+  # end
+  #
+  # version :card do
+  #   process :resize_to_limit => [200, 200]
+  # end
 
   # Add a white list of extensions which are allowed to be uploaded.
   # For images you might use something like this:
