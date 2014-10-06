@@ -39,8 +39,24 @@ class ListingsController < ApplicationController
     @listings = Listing.includes(:user).find(session[:fav])
   end
   
-  def by_category
-    
+  def by_cat
+    @listings = Listing.includes(:user).where("category_id = #{params[:listing][:category_id]}")
+    respond_to do |format|
+      format.html {redirect_to root_path}
+      format.js
+    end
+  end
+  
+  def by_loc
+    @listings = Listing.includes(:user).where("location_id = #{params[:listing][:location_id]}")
+    respond_to do |format|
+      format.html {redirect_to root_path}
+      format.js
+    end
+  end
+  
+  def by_budget
+    @listings = Listing.includes(:user).where("budget = '#{params[:budget]}'")
     respond_to do |format|
       format.html {redirect_to root_path}
       format.js

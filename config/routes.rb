@@ -11,5 +11,9 @@ Visdir::Application.routes.draw do
   get '/fav' => 'listings#fav', :as => 'fav'
   get '/favs' => 'listings#favs', :as => 'favs'
   
+  get '/by_cat' => 'listings#by_cat' 
+  get '/by_loc' => 'listings#by_loc' 
+  get '/by_budget' => 'listings#by_budget'
+  
   root :to => 'listings#index'
 end

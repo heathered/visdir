@@ -1,0 +1,24 @@
+<% if @listings %>
+  <% @listings.each do |l| %>
+  <div class="card" data-cat="<%= l.category_id %>" data-loc="<%= l.location_id %>" data-budget="<%= l.budget.downcase %>">
+    <div class="card-fav-d">
+    <% if session[:fav].include?(l.id) %>
+      <%= link_to "Add to Favs", { controller: 'listings', action: 'fav', id: l.id }, id: "card-#{l.id}", class: 'card-fav', remote: true %>
+    <% else %>
+      <%= link_to "Remove from Favs", { controller: 'listings', action: 'fav', id: l.id }, id: "card-#{l.id}", class: 'card-fav card-is-faved', remote: true %>
+    <% end %>
+    </div>
+    
+    <h2 class="card-header"><a href="/listing/<%= l.id %>"><%= l.name %></a></h2>
+
+    <div class="card-preview">
+      <a href="/listing/<%= l.id %>"><%= image_tag l.card_pic_url.to_s %></a>
+    </div>
+
+    <div class="card-details">
+      <div class="card-details-location"><%= l.location.name %></div>
+      <div class="card-details-budget"><%= l.budget %> Budget</div>
+    </div>
+  </div>
+  <% end %>
+<% end %>

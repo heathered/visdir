@@ -3,7 +3,7 @@
 
   <div class="searchbar-section">
     
-    <%= collection_select(:listing, :category_id, Category.all, :id, :name, {prompt: "All"}, {class: 'sb-select', data: { remote: true }, controller: 'listings', action: 'by_cat'}) %>
+    <%= collection_select(:listing, :category_id, Category.all, :id, :name, {prompt: "All"}, {class: 'sb-select', data: { remote: true, url: url_for(controller: 'listings', action: 'by_cat') }}) %>
 
     <div class="searchbar-section-label">Photographers</div>
   </div>
@@ -11,13 +11,13 @@
   <div class="searchbar-label_section">in</div>
 
   <div class="searchbar-section">
-    <%= collection_select(:listing, :location_id, Location.all, :id, :name, {prompt: "All"}, {class: 'sb-select', data: { remote: true }}) %>
+    <%= collection_select(:listing, :location_id, Location.all, :id, :name, {prompt: "All"}, {class: 'sb-select', data: { remote: true, url: url_for(controller: 'listings', action: 'by_loc') }, controller: 'listings', action: 'by_loc'}) %>
   </div>
 
   <div class="searchbar-label_section">for</div>
 
   <div class="searchbar-section">
-    <%= select_tag 'budget', options_for_select([['Any Budget', 'any'], ['High Budget', 'high'], ['Low Budget', 'low']]), class: 'sb-select', data: { remote: true } %>
+    <%= select_tag 'budget', options_for_select([['Any Budget', 'any'], ['High Budget', 'High'], ['Low Budget', 'Low']]), class: 'sb-select', data: { remote: true, url: url_for(controller: 'listings', action: 'by_budget') }, controller: 'listings', action: 'by_budget' %>
   </div>
 </div>
 
