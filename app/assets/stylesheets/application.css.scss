@@ -1,0 +1,109 @@
+@import "normalize";
+@import "settings";
+@import "layout";
+@import "modules";
+@import "mixins";
+@import "tags";
+
+header{
+  background: #fff;
+}
+
+main{
+  background: url("/assets/halftone.png");
+}
+
+#header-logo a{
+  @include image_replacement("/assets/logo.svg", 119px, 59px);
+}
+
+#header-nav-ul{
+  @extend %fake_ul;
+}
+
+.header-nav-link{
+  @extend %sans_font;
+  text-transform: lowercase;
+  font-weight: bold;
+  text-decoration: none;
+  color: #1F7193;
+}
+
+#header-account-ul{
+  @extend %fake_ul;
+  
+  a{
+    color: #1F7193;
+  }
+}
+
+#header-account-label{
+  color: #999;
+}
+
+#searchbar{
+  @extend %rounded_background;
+  @extend %inset_shadow;
+  background: #F3F3F3;
+}
+
+#searchbar-label{
+  @extend %sans_font;
+  color: #5DA0BF;
+  font-size: 18px;
+}
+
+.searchbar-label_section{
+  @extend %sans_font;
+  color: #5DA0BF;
+  font-size: 18px;
+}
+
+.searchbar-section-label{
+  font-size: 12px;
+  color: #999;
+}
+
+.card{
+  @extend %rounded_background;
+  @extend %inset_shadow;
+  background: #fff;
+  
+  img{
+    @extend %rounded_background;
+  }
+}
+
+.card-fav{
+  @include image_replacement("/assets/fav.png", 21px, 21px)
+}
+.card-is-faved{
+  @include image_replacement("/assets/unfav.png", 21px, 21px)
+}
+
+.card-header{
+  @extend %serif_font;
+  font-size: 18px;
+  
+  a{
+    color: #DB6713;
+  }
+}
+
+.card-pro .card-header{
+  font-size: 26px;
+}
+
+.card-details{
+  font-size: 14px;
+}
+
+.card-pro .card-details-location:after{
+  content: " \2022";
+}
+
+#footer{
+  a{
+    color: #999;
+  }
+}

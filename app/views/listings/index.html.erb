@@ -1,0 +1,89 @@
+<div id="searchbar">
+  <div id="searchbar-label">I'm looking for</div>
+
+  <div class="searchbar-section">
+    <select>
+      <option>All</option>
+      <option>Senior Portrait</option>
+      <option>Wedding</option>
+      <option>Real Estate</option>
+    </select>
+
+    <div class="searchbar-section-label">Photographers</div>
+  </div>
+
+  <div class="searchbar-label_section">in</div>
+
+  <div class="searchbar-section">
+    <select>
+      <option>All Locations</option>
+      <option>Washington, D.C.</option>
+      <option>Omaha, NE</option>
+      <option>Council Bluffs, NE</option>
+    </select>
+  </div>
+
+  <div class="searchbar-label_section">for</div>
+
+  <div class="searchbar-section">
+    <select>
+      <option>Any Budget</option>
+      <option>Low Budget</option>
+      <option>High Budget</option>
+    </select>
+  </div>
+</div>
+
+<div id="cards">
+  
+<% if @pros.length > 1 %>
+  <% @pros.each do |pro| %>
+  <div class="card card-pro">
+    <div class="card-fav-d">
+    <% if session[:fav].include?(pro.id) %>
+      <%= link_to "Add to Favs", { controller: 'listings', action: 'fav', id: pro.id }, id: "card-#{pro.id}", class: 'card-fav', remote: true %>
+    <% else %>
+      <%= link_to "Remove from Favs", { controller: 'listings', action: 'fav', id: pro.id }, id: "card-#{pro.id}", class: 'card-fav card-is-faved', remote: true %>
+    <% end %>
+    </div>
+
+    <div class="card-preview">
+      <a href="/listing/<%= pro.id %>"><%= image_tag pro.card_pic_url.to_s %></a>
+    </div>
+
+    <h2 class="card-header"><a href="/listing/<%= pro.id %>"><%= pro.name %></a></h2>
+
+    <div class="card-details">
+      <div class="card-details-location"><%= pro.location.name %></div>
+      <div class="card-details-budget"><%= pro.budget %> Budget</div>
+    </div>
+  </div>
+  <% end %>
+<% end %>
+
+<% if @listings %>
+  <% @listings.each do |l| %>
+  <div class="card">
+    <div class="card-fav-d">
+    <% if session[:fav].include?(l.id) %>
+      <%= link_to "Add to Favs", { controller: 'listings', action: 'fav', id: l.id }, id: "card-#{l.id}", class: 'card-fav', remote: true %>
+    <% else %>
+      <%= link_to "Remove from Favs", { controller: 'listings', action: 'fav', id: l.id }, id: "card-#{l.id}", class: 'card-fav card-is-faved', remote: true %>
+    <% end %>
+    </div>
+    
+    <h2 class="card-header"><a href="/listing/<%= l.id %>"><%= l.name %></a></h2>
+
+    <div class="card-preview">
+      <a href="/listing/<%= l.id %>"><%= image_tag l.card_pic_url.to_s %></a>
+    </div>
+
+    <div class="card-details">
+      <div class="card-details-location"><%= l.location.name %></div>
+      <div class="card-details-budget"><%= l.budget %> Budget</div>
+    </div>
+  </div>
+  <% end %>
+<% end %>
+
+</div>

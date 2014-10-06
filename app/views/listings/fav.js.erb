@@ -1,0 +1,3 @@
+$('#card-<%= params[:id] %>').parent().html("<%= j render 'fav' %>");
+$('#card-<%= params[:id] %>').toggleClass('.card-is-faved');
+

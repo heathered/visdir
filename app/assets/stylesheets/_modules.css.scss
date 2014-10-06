@@ -1,0 +1,38 @@
+%cf{
+  &:before, &:after{
+    content: " ";
+    display: table;
+  }
+  &:after{
+    clear: both;
+  }
+}
+
+%sans_font{
+  font-family: 'Droid Sans', sans-serif;
+}
+
+%serif_font{
+  font-family: 'Roboto Slab', serif;
+}
+
+%fake_ul{
+  @extend %cf;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  
+  li{
+    float: left;
+  }
+}
+
+%rounded_background{
+  border-radius: 5px;
+}
+
+%inset_shadow{
+  -webkit-box-shadow: inset 0px 0px 12px -4px rgba(0,0,0,0.4);
+  -moz-box-shadow: inset 0px 0px 12px -4px rgba(0,0,0,0.4);
+  box-shadow: inset 0px 0px 12px -4px rgba(0,0,0,0.4);
+}

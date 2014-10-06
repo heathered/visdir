@@ -1,0 +1,42 @@
+<% if @listing.errors %>
+  <% @listing.errors.full_messages.each do |msg| %>
+    <p><%= msg %></p>
+  <% end %>
+<% end %>
+
+<%= form_for @listing, 'html' => {multipart: true} do |f| %>
+  
+    <%= f.hidden_field :user_id, value: session[:user_id] %>
+
+  <p>
+    <%= f.label :name %>
+    <%= f.text_field :name %>
+  </p>
+  <p>
+    <%= f.label :desc %>
+    <%= f.text_field :desc %>
+  </p>
+  <p>
+    <%= f.label :category %>
+    <%= f.collection_select :category_id, Category.all, :id, :name %>
+  </p>
+  <p>
+    <%= f.label :budget %>
+    <%= f.select :budget, [["High"], ['Low']] %>
+  </p>
+  <p>
+    <%= f.label :location %>
+    <%= f.collection_select :location_id, Location.all, :id, :name %>
+  </p>
+  <p>
+    <%= f.label :card_pic, "Upload File" %>
+    <%= f.file_field :card_pic %>
+  </p>
+  <p>
+    <%= f.label :remote_card_pic_url, "Upload URL" %>
+    <%= f.text_field :remote_card_pic_url %>
+  </p>
+
+  <%= f.submit %>
+
+<% end %>

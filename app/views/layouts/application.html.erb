@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Visdir</title>
+  <%= stylesheet_link_tag    "application", :media => "all" %>
+  <%= javascript_include_tag "application" %>
+  <%= csrf_meta_tags %>
+  
+  <link rel='stylesheet' href='http://fonts.googleapis.com/css?family=Droid+Sans:400,700|Roboto+Slab:700,400' type='text/css'>
+</head>
+<body>
+  
+  <header>
+    <div id="header">
+      <h1 id="header-logo"><%= link_to 'Visdir', root_path %></h1>
+  
+      <nav id="header-nav">
+        <ul id="header-nav-ul">
+          <li><%= link_to "Favs", favs_path, class: 'header-nav-link' %></li>
+          <li><a href="#" class="header-nav-link">About</a></li>
+        </ul>
+      </nav>
+  
+      <div id="header-account">
+        <% if current_user %>
+          <div id="header-account-label">Welcome back!</div>
+        
+          <ul id="header-account-ul">
+            <li id="header-account-login"><%= link_to 'Log out', logout_path %></li>
+          </ul>
+        <% else %>
+          <div id="header-account-label">Photographers</div>
+    
+          <ul id="header-account-ul">
+            <li id="header-account-login"><%= link_to 'Log in', login_path %> or</li>
+            <li id="header-account-signup"><%= link_to 'Sign up', signup_path %></li>
+          </ul>
+        <% end %>
+      </div>
+    </div>
+  </header>
+  
+  <main>
+    <div id="main">
+      
+      <%= yield %>
+      
+    </div>
+  </main>
+
+<footer>
+  <div id="footer">
+    <a href="#">VisDir</a>
+  </div>
+</footer>
+
+</body>
+</html>

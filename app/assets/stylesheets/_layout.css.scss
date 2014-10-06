@@ -1,0 +1,145 @@
+%viewing_area{
+  width: $viewing_area_width;
+  margin: 0 auto;
+}
+
+%header_positioning{
+  position: relative;
+  top: 50px;
+}
+
+#header{
+  @extend %viewing_area;
+  @extend %cf;
+}
+
+#header-logo{
+  float: left;
+  margin-right: 50px;
+}
+
+#header-nav{
+  @extend %header_positioning;
+  float: left;
+}
+
+.header-nav-link{
+  margin-right: 30px;
+}
+
+#header-account{
+  @extend %cf;
+  @extend %header_positioning;
+  float: right;
+}
+
+#header-account-ul{
+  float: left;
+}
+
+#header-account-label{
+  float: left;
+  margin-right: 12px;
+}
+
+#header-account-signup{
+  margin-left: 4px;
+}
+
+#main{
+  @extend %viewing_area;
+  padding: 14px 0;
+}
+
+#searchbar{
+  padding: 0 8px;
+  margin-bottom: 14px;
+  text-align: center;
+}
+
+#searchbar-label{
+  display: inline-block;
+  vertical-align: top;
+  padding: 14px 8px;
+}
+
+.searchbar-section{
+  display: inline-block;
+  vertical-align: top;
+  padding: 14px 8px;
+}
+
+.searchbar-label_section{
+  display: inline-block;
+  vertical-align: top;
+  padding: 14px 2px;
+}
+
+.searchbar-section-label{
+  text-align: left;
+}
+
+#cards{
+  @extend %cf;
+}
+
+.card{
+  float: left;
+  width: 232px;
+  margin: 0 4px 8px 4px;
+  padding: 10px;
+  position: relative;
+  min-height: 250px;
+  
+  img{
+    width: 100%;
+  }
+  
+  .card-fav{
+    bottom: 15px;
+  }
+}
+
+.card-pro{
+  width: 472px;
+  min-height: 380px;
+  
+  
+  .card-fav{
+    top: 20px;
+  }
+}
+
+.card-fav{
+  position: absolute;
+  right: 20px;
+}
+
+.card-header{
+  text-align: center;
+  margin: 0 0 6px;
+}
+
+.card-details{
+  margin-top: 6px;
+}
+
+.card-pro{
+  .card-details{
+    text-align: center;
+  }
+
+  .card-details-location{
+    display: inline-block;
+  }
+
+  .card-details-budget{
+    display: inline-block;
+  }
+}
+
+#footer{
+  @extend %viewing_area;
+  text-align: center;
+  padding: 30px 0;
+}
