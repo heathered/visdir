@@ -39,4 +39,12 @@ class ListingsController < ApplicationController
     @listings = Listing.includes(:user).find(session[:fav])
   end
   
+  def by_category
+    
+    respond_to do |format|
+      format.html {redirect_to root_path}
+      format.js
+    end
+  end
+  
 end

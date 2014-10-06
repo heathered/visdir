@@ -2,13 +2,8 @@
   <div id="searchbar-label">I'm looking for</div>
 
   <div class="searchbar-section">
-    <!-- <select class="sb-select">
-      <option>All</option>
-      <option>Senior Portrait</option>
-      <option>Wedding</option>
-      <option>Real Estate</option>
-    </select> -->
-    <%= collection_select(:listing, :category_id, Category.all, :id, :name) %>
+    
+    <%= collection_select(:listing, :category_id, Category.all, :id, :name, {prompt: "All"}, {class: 'sb-select', data: { remote: true }, controller: 'listings', action: 'by_cat'}) %>
 
     <div class="searchbar-section-label">Photographers</div>
   </div>
@@ -16,22 +11,13 @@
   <div class="searchbar-label_section">in</div>
 
   <div class="searchbar-section">
-    <select class="sb-select">
-      <option>All Locations</option>
-      <option>Washington, D.C.</option>
-      <option>Omaha, NE</option>
-      <option>Council Bluffs, NE</option>
-    </select>
+    <%= collection_select(:listing, :location_id, Location.all, :id, :name, {prompt: "All"}, {class: 'sb-select', data: { remote: true }}) %>
   </div>
 
   <div class="searchbar-label_section">for</div>
 
   <div class="searchbar-section">
-    <select class="sb-select">
-      <option>Any Budget</option>
-      <option>Low Budget</option>
-      <option>High Budget</option>
-    </select>
+    <%= select_tag 'budget', options_for_select([['Any Budget', 'any'], ['High Budget', 'high'], ['Low Budget', 'low']]), class: 'sb-select', data: { remote: true } %>
   </div>
 </div>
 
@@ -39,7 +25,7 @@
   
 <% if @pros.length > 0 %>
   <% @pros.each do |pro| %>
-  <div class="card card-pro">
+  <div class="card card-pro" data-cat="<%= pro.category_id %>" data-loc="<%= pro.location_id %>" data-budget="<%= pro.budget.downcase %>">
     <div class="card-fav-d">
     <% if session[:fav].include?(pro.id) %>
       <%= link_to "Add to Favs", { controller: 'listings', action: 'fav', id: pro.id }, id: "card-#{pro.id}", class: 'card-fav', remote: true %>
@@ -64,7 +50,7 @@
 
 <% if @listings %>
   <% @listings.each do |l| %>
-  <div class="card">
+  <div class="card" data-cat="<%= l.category_id %>" data-loc="<%= l.location_id %>" data-budget="<%= l.budget.downcase %>">
     <div class="card-fav-d">
     <% if session[:fav].include?(l.id) %>
       <%= link_to "Add to Favs", { controller: 'listings', action: 'fav', id: l.id }, id: "card-#{l.id}", class: 'card-fav', remote: true %>
