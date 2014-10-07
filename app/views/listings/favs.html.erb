@@ -50,7 +50,7 @@
     <h2 class="card-header"><a href="/listing/<%= l.id %>"><%= l.name %></a></h2>
 
     <div class="card-preview">
-      <a href="/listing/<%= l.id %>"><%= image_tag l.card_pic_url(:card).to_s %></a>
+      <a href="/listing/<%= l.id %>"><%= image_tag l.card_pic_url.to_s %></a>
     </div>
 
     <div class="card-details">
